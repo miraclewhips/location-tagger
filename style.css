@@ -1,0 +1,64 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+	background: #181818;
+	color: #eee;
+	margin: 20px auto;
+	padding: 0 20px;
+	font-size: 16px;
+	line-height: 1.4;
+	max-width: 1000px;
+}
+
+.info {
+	color: #777;
+}
+
+.is-hidden {
+	display: none !important;
+}
+
+.field {
+	padding: 1em 0;
+}
+
+.field p {
+	margin: 0 0 0.5em 0;
+}
+
+.field label:not(:last-of-type) {
+	margin-right: 1em;
+}
+
+.tables {
+	display: flex;
+	gap: 20px;
+}
+
+table {
+	border-spacing: 0;
+}
+
+th {
+	text-align: left;
+}
+
+th:not(:first-child), td:not(:first-child) {
+	text-align: right;
+}
+
+th, td {
+	padding: 0.5em 1em;
+	border-bottom: 1px solid #333;
+}
+
+td, img {
+	vertical-align: middle;
+}
+
+td img {
+	margin-right: 0.5em;
+}

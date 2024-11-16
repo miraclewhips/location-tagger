@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>GeoGuessr Location Tagger</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="style.css" rel="stylesheet">
+		<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+	</head>
+	<body>
+		<h1>GeoGuessr Location Tagger</h1>
+
+		<p class="info">This tool allows you to quickly tag your GeoGuessr map locations with country or continent tags. You can also just run locations through the tool to view the distribution tables. Note: locations very close to borders may sometimes be incorrectly tagged. You can contact miraclewhips on Discord with any examples of incorrect tagging and I can fix the borders.</p>
+		
+		<div id="options">
+			<div class="field">
+				<p>Tags to add:</p>
+				<div>
+					<label><input type="checkbox" id="tag-cc">Country Code</label>
+					<label><input type="checkbox" id="tag-name">Name</label>
+					<label><input type="checkbox" id="tag-continent">Continent</label>
+				</div>
+			</div>
+
+			<div class="field">
+				<p>Settings:</p>
+				<div>
+					<label><input type="checkbox" id="existing">Remove existing tags</label>
+				</div>
+			</div>
+
+			<div class="field">
+				<p>Locations:</p>
+				<p><input type="button" value="Import JSON" id="import"> (or paste with CTRL+V)</p>
+				<p id="stats"></p>
+			</div>
+
+			<div class="field">
+				<input type="button" value="START" id="start" class="is-hidden">
+			</div>
+		</div>
+
+		<p id="progress"></p>
+
+		<div id="dist" class="is-hidden">
+			<h2>Successful Locations</h2>
+			<p id="success-message"></p>
+			
+			<div>
+				<input type="button" value="Download as JSON" id="success-download">
+				<input type="button" value="Copy to clipboard" id="success-copy">
+			</div>
+
+			<br>
+
+			<div id="failed-locs" class="is-hidden">
+				<h2>Failed Locations</h2>
+				<p id="failed-message"></p>
+			
+				<div>
+					<input type="button" value="Download as JSON" id="failed-download">
+					<input type="button" value="Copy to clipboard" id="failed-copy">
+				</div>
+
+				<br>
+			</div>
+
+			<h2>Distribution</h2>
+
+			<div>
+				<p>
+					Copy distributions to clipboard (formatted for Google Sheets):
+					<input type="button" value="Country" id="csv-countries">
+					<input type="button" value="Continent" id="csv-continents">
+				</p>
+			</div>
+			
+			<div class="tables">
+				<div class="tables__col">
+					<table>
+						<thead>
+							<tr>
+								<th>Country</th>
+								<th>#</th>
+								<th>%</th>
+							</tr>
+						</thead>
+						<tbody id="country-table"></tbody>
+					</table>
+				</div>
+
+				<div class="tables__col">
+					<table>
+						<thead>
+							<tr>
+								<th>Continent</th>
+								<th>#</th>
+								<th>%</th>
+							</tr>
+						</thead>
+						<tbody id="continent-table"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="turf.min.js"></script>	
+		<script type="text/javascript" src="main.js"></script>	
+	</body>
+</html>
